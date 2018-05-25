@@ -76,7 +76,7 @@ pub enum Type {
     AnyFunc,
     Func,
     EmptyBlockType,
-    AnyRef,
+    R32,
 }
 
 #[derive(Debug)]
@@ -670,7 +670,7 @@ impl<'a> BinaryReader<'a> {
             -0x10 => Ok(Type::AnyFunc),
             -0x20 => Ok(Type::Func),
             -0x40 => Ok(Type::EmptyBlockType),
-            0x30 => Ok(Type::AnyRef),
+            0x30 => Ok(Type::R32), // For now, changed Type::AnyRef to Type::R32
             _ => {
                 Err(BinaryReaderError {
                         message: "Invalid type",
