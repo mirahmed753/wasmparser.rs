@@ -661,6 +661,7 @@ impl<'a> BinaryReader<'a> {
 
     fn read_type(&mut self) -> Result<Type> {
         let code = self.read_var_i7()?;
+        println!("{:X}", code);
         match code {
             -0x01 => Ok(Type::I32),
             -0x02 => Ok(Type::I64),
@@ -669,7 +670,7 @@ impl<'a> BinaryReader<'a> {
             -0x10 => Ok(Type::AnyFunc),
             -0x20 => Ok(Type::Func),
             -0x40 => Ok(Type::EmptyBlockType),
-            -0x50 => Ok(Type::AnyRef),
+            0x30 => Ok(Type::AnyRef),
             _ => {
                 Err(BinaryReaderError {
                         message: "Invalid type",
