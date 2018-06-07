@@ -654,6 +654,8 @@ impl<'a> BinaryReader<'a> {
     fn read_var_i7(&mut self) -> Result<i32> {
         let b = self.read_u8()?;
         println!("Value of b is {}", b);
+        let check = b & 0x80;
+        println!("Value of check is {}", check);
         if (b & 0x80) != 0 {
             return Err(BinaryReaderError {
                            message: "Invalid var_i7",
