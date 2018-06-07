@@ -282,6 +282,19 @@ impl Ieee64 {
     }
 }
 
+/// A R32 binary32 reference type value, represented as a u32
+/// containing the bitpattern.
+///
+/// All bit patterns are allowed.
+#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
+pub struct R32(u32);
+
+impl R32 {
+    pub fn bits(&self) -> u32 {
+        self.0
+    }
+}
+
 /// Instructions as defined [here].
 ///
 /// [here]: https://webassembly.github.io/spec/binary/instructions.html
@@ -336,6 +349,7 @@ pub enum Operator<'a> {
     I64Const { value: i64 },
     F32Const { value: Ieee32 },
     F64Const { value: Ieee64 },
+    // R32Const { value: r32 },
     I32Eqz,
     I32Eq,
     I32Ne,
@@ -641,7 +655,7 @@ impl<'a> BinaryReader<'a> {
         let b = self.read_u8()?;
         if (b & 0x80) != 0 {
             return Err(BinaryReaderError {
-                           message: "Invalid var_i7",
+                           message: "Invalid Indeed var_i7",
                            offset: self.position - 1,
                        });
         }
@@ -1028,6 +1042,11 @@ impl<'a> BinaryReader<'a> {
         let ashift = 64 - shift;
         Ok((result << ashift) >> ashift)
     }
+
+    // pub fn read_r32(&mut self) -> Result<r32> {
+    //     let value = self.
+    //     Ok()
+    // }
 
     pub fn read_f32(&mut self) -> Result<Ieee32> {
         let value = self.read_u32()?;
