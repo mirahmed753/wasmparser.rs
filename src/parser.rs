@@ -945,7 +945,7 @@ impl<'a> BinaryReader<'a> {
         self.ensure_has_byte()?;
         let b = self.buffer[self.position] as u32;
         self.position += 1;
-        println!("{}", b);
+        println!("Value of b: {}", b);
         Ok(b)
     }
 
