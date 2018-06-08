@@ -687,7 +687,7 @@ impl<'a> BinaryReader<'a> {
             -0x10 => Ok(Type::AnyFunc),
             -0x20 => Ok(Type::Func),
             -0x40 => Ok(Type::EmptyBlockType),
-            0x30 => Ok(Type::R32), // For now, changed Type::AnyRef to Type::R32
+            0x30 => Ok(Type::R32), // Type::R32
             _ => {
                 Err(BinaryReaderError {
                         message: "Invalid type",
@@ -945,7 +945,6 @@ impl<'a> BinaryReader<'a> {
         self.ensure_has_byte()?;
         let b = self.buffer[self.position] as u32;
         self.position += 1;
-        println!("Value of b: {}", b);
         Ok(b)
     }
 
