@@ -349,7 +349,7 @@ pub enum Operator<'a> {
     I64Const { value: i64 },
     F32Const { value: Ieee32 },
     F64Const { value: Ieee64 },
-    // R32Const { value: r32 },
+    R32Const { value: r32 },
     I32Eqz,
     I32Eq,
     I32Ne,
