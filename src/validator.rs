@@ -814,6 +814,7 @@ impl OperatorValidator {
                }
                Operator::I32Const { .. } => OperatorAction::ChangeFrameWithType(0, Type::I32),
                Operator::I64Const { .. } => OperatorAction::ChangeFrameWithType(0, Type::I64),
+               Operator::R32Const { .. } => OperatorAction::ChangeFrameWithType(0, Type::R32),
                Operator::F32Const { .. } => OperatorAction::ChangeFrameWithType(0, Type::F32),
                Operator::F64Const { .. } => OperatorAction::ChangeFrameWithType(0, Type::F64),
                Operator::I32Eqz => {
@@ -1427,6 +1428,7 @@ impl<'a> ValidatingParser<'a> {
         let ty = match *operator {
             Operator::I32Const { .. } => Type::I32,
             Operator::I64Const { .. } => Type::I64,
+            Operator::R32Const { .. } => Type::R32,
             Operator::F32Const { .. } => Type::F32,
             Operator::F64Const { .. } => Type::F64,
             Operator::GetGlobal { global_index } => {
