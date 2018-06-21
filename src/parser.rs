@@ -282,18 +282,18 @@ impl Ieee64 {
     }
 }
 
-/// A R32 binary32 reference type value, represented as a u32
-/// containing the bitpattern.
-///
-/// All bit patterns are allowed.
-#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
-pub struct R32(u32);
-
-impl R32 {
-    pub fn bits(&self) -> u32 {
-        self.0
-    }
-}
+// /// A R32 binary32 reference type value, represented as a u32
+// /// containing the bitpattern.
+// ///
+// /// All bit patterns are allowed.
+// #[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
+// pub struct R32(u32);
+//
+// impl R32 {
+//     pub fn bits(&self) -> u32 {
+//         self.0
+//     }
+// }
 
 /// Instructions as defined [here].
 ///
