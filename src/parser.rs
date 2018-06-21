@@ -349,7 +349,7 @@ pub enum Operator<'a> {
     I64Const { value: i64 },
     F32Const { value: Ieee32 },
     F64Const { value: Ieee64 },
-    R32Const { value: R32 },
+    R32Const,
     I32Eqz,
     I32Eq,
     I32Ne,
@@ -1185,6 +1185,7 @@ impl<'a> BinaryReader<'a> {
                }
                0x1a => Operator::Drop,
                0x1b => Operator::Select,
+               0x1c => Operator::R32Const,
                0x20 => Operator::GetLocal { local_index: self.read_var_u32()? },
                0x21 => Operator::SetLocal { local_index: self.read_var_u32()? },
                0x22 => Operator::TeeLocal { local_index: self.read_var_u32()? },
